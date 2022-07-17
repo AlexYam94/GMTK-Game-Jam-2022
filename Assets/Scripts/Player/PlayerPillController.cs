@@ -29,9 +29,11 @@ public class PlayerPillController : MonoBehaviour
 
     public enum PillType
     {
-        ChangeSize,
+        Enlarge,
+        Delarge,
         Invincible,
-        ChangeSpeed,
+        Accelerate,
+        Decelerate
     }
 
     // Start is called before the first frame update
@@ -111,11 +113,13 @@ public class PlayerPillController : MonoBehaviour
             case PillType.Invincible:
                 _playerController.ToggleInvertControl();
                 break;
-            case PillType.ChangeSpeed:
+            case PillType.Accelerate:
                 if (!pill.canStop)
                 {
                     _playerController.ToggleCanStop();
                 }
+                break;
+            default:
                 break;
         }
     }
@@ -144,11 +148,13 @@ public class PlayerPillController : MonoBehaviour
             case PillType.Invincible:
                 _playerController.ToggleInvertControl();
                 break;
-            case PillType.ChangeSpeed:
+            case PillType.Accelerate:
                 if (!_currentPill.canStop)
                 {
                     _playerController.ToggleCanStop();
                 }
+                break;
+            default:
                 break;
         }
     }
