@@ -160,22 +160,22 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void ResetInventory()
     {
-        _inventorySizeupPillNum--;
+        _inventorySizeupPillNum=0;
         _sizeupImage.gameObject.SetActive(false);
 
-        _inventorySizedownPillNum--;
+        _inventorySizedownPillNum=0;
         _sizedownImage.gameObject.SetActive(false);
 
-        _inventoryInvinciblePillNum--;
+        _inventoryInvinciblePillNum=0;
         _invincibleImage.gameObject.SetActive(false);
 
-        _inventoryAcceleratePillNum--;
+        _inventoryAcceleratePillNum=0;
         _accelerateImage.gameObject.SetActive(false);
 
-        _inventoryDeceleratePillNum--;
+        _inventoryDeceleratePillNum=0;
         _deceeratImage.gameObject.SetActive(false);
 
-        _inventoryInvisiblePillNum--;
+        _inventoryInvisiblePillNum=0;
         _invisibleImage.gameObject.SetActive(false);
 
         _canInventoryPill = true;
