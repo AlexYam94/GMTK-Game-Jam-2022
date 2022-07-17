@@ -30,7 +30,7 @@ public class BattleEndTask : Node
     public override NodeState Evaluate()
     {
         bool battleEnded = GetData<bool>(GhostBossBT.BattleEndTag);
-        if (battleEnded)
+        if (battleEnded || PlayerHealthController.GetInstance().GetCurrentHealth()¡@<= 0)
         {
 
             ScoreController.GetInstance().Add(5000);
@@ -64,10 +64,15 @@ public class BattleEndTask : Node
             }
             return NodeState.SUCCESS;
         }
-        else
+        else if(PlayerHealthController.GetInstance().GetCurrentHealth()>0)
         {
             _virtualCamera.transform.position = Vector3.Lerp(_virtualCamera.transform.position, _camPosition.position, _camSpeed * Time.deltaTime);
             return NodeState.FAILURE;
+        }
+        else
+        {
+            _virtualCamera.GetComponent<LookAt>().enabled = true;
+            return NodeState.SUCCESS;
         }
     }
 }

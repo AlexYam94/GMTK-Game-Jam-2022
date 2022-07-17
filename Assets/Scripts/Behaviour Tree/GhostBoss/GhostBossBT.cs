@@ -43,6 +43,7 @@ public class GhostBossBT : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         _context = new Dictionary<string, object>();
         _player = PlayerHealthController.GetInstance().gameObject;
         _virtualCamera.GetComponent<LookAt>().enabled = false;
