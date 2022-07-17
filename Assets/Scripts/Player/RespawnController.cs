@@ -65,6 +65,7 @@ public class RespawnController : MonoBehaviour
         {
             yield return null;
         }
+        _player.GetComponent<PlayerInventoryController>().ResetInventory();
         _player.transform.position = _respawnPoint;
         _player.SetActive(true);
         PlayerHealthController.GetInstance().FillHealth();

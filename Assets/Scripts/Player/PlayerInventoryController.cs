@@ -160,12 +160,25 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void ResetInventory()
     {
-        RemovePill(PlayerPillController.PillType.Accelerate);
-        RemovePill(PlayerPillController.PillType.Decelerate);
-        RemovePill(PlayerPillController.PillType.Sizeup);
-        RemovePill(PlayerPillController.PillType.Sizedown);
-        RemovePill(PlayerPillController.PillType.Invincible);
-        RemovePill(PlayerPillController.PillType.Invisible);
+        _inventorySizeupPillNum--;
+        _sizeupImage.gameObject.SetActive(false);
+
+        _inventorySizedownPillNum--;
+        _sizedownImage.gameObject.SetActive(false);
+
+        _inventoryInvinciblePillNum--;
+        _invincibleImage.gameObject.SetActive(false);
+
+        _inventoryAcceleratePillNum--;
+        _accelerateImage.gameObject.SetActive(false);
+
+        _inventoryDeceleratePillNum--;
+        _deceeratImage.gameObject.SetActive(false);
+
+        _inventoryInvisiblePillNum--;
+        _invisibleImage.gameObject.SetActive(false);
+
+        _canInventoryPill = true;
     }
 
     private void RemovePill(PlayerPillController.PillType type) {
