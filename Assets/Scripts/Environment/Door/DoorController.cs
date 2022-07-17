@@ -81,7 +81,7 @@ public class DoorController : MonoBehaviour
         _player.EnableInput();
         Vector3 spawnPos = GameObject.Find("SpawnPoint").transform.position;
         _player.transform.position = spawnPos;
-        RespawnController.instance.SetSpawn(_doorWayExitPoint.position);
+        RespawnController.instance.SetSpawn(spawnPos);
         if (_levelToLoad.Length > 0)
         {
             SceneManager.LoadScene(_levelToLoad);

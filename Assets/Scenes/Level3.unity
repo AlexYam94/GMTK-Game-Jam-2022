@@ -153,11 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938191144840369748, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.146109
+      value: 70.7
       objectReference: {fileID: 0}
     - target: {fileID: 1938191144840369748, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.340001
+      value: 17.4
       objectReference: {fileID: 0}
     - target: {fileID: 1938191144840369748, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826130754405221373, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.3056793
+      value: 5.537895
       objectReference: {fileID: 0}
     - target: {fileID: 2826130754405221373, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -211,9 +211,29 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5802846713325113248, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -78.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5802846713325113248, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6462242286220346074, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
       propertyPath: m_Name
       value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499807196210504084, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
+      propertyPath: _levelToLoad
+      value: GhostBossFight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804255100775536529, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 168.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804255100775536529, guid: a0dc9b811e2da3047852af11c3ccddcc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -35,7 +35,6 @@ public class BattleEndTask : Node
         if (battleEnded || PlayerHealthController.GetInstance().GetCurrentHealth()¡@<= 0)
         {
 
-            ScoreController.GetInstance().Add(5000);
             if (!_camBackToNormal)
             {
                 _anim.SetTrigger("vanished");
@@ -57,15 +56,21 @@ public class BattleEndTask : Node
                     _virtualCamera.GetComponent<LookAt>().enabled = true;
 
                     _bt.SetActive(false);
+                    _virtualCamera.m_Lens.OrthographicSize = 6;
+                    //SceneManager.LoadScene("GameOver");
+
+                    ScoreController.GetInstance().Add(5000);
                 }
             }
             else
             {
                 _bt.SetActive(false);
                 _virtualCamera.GetComponent<LookAt>().enabled = true;
+                _virtualCamera.m_Lens.OrthographicSize = 6;
+                //SceneManager.LoadScene("GameOver");
+
+                ScoreController.GetInstance().Add(5000);
             }
-            _virtualCamera.m_Lens.OrthographicSize = 6;
-            SceneManager.LoadScene("GameOver");
             return NodeState.SUCCESS;
         }
         else if(PlayerHealthController.GetInstance().GetCurrentHealth()>0)
