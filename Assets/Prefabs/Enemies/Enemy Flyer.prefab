@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9be2c1f112fc714792437047a6b1d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeToStartChase: 5
+  _rangeToStartChase: 7
   _flySpeed: 5
   _turnSpeed: 5
 --- !u!114 &965266461
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0127f8c607d26014291564f3d0615eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropRate: 0.5
+  dropRate: 0.2
   itemsToDrop:
   - {fileID: 2704299513600459222, guid: 39b96846bf91ade44bee9296ad748f9d, type: 3}
   - {fileID: 7822444963552913432, guid: c1bf07ed6bf38a545bfb1321454f8489, type: 3}
