@@ -589,8 +589,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bb343b940c95e9640a1457629ee1198f, type: 2}
-  m_sharedMaterial: {fileID: 5050572105553743430, guid: bb343b940c95e9640a1457629ee1198f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -897,12 +897,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3858331487878545982, guid: 9df4e92c959197f4b917e20604efc418, type: 3}
+  m_Sprite: {fileID: -1485602044, guid: 606a7898cad0cae499f798cea59ab664, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 5}
+  m_Size: {x: 2.6, y: 3.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -921,8 +921,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0055351257, y: 0.022140503}
-  m_Size: {x: 1.5313339, y: 2.6531029}
+  m_Offset: {x: 0.06595993, y: 0.23662853}
+  m_Size: {x: 2.613987, y: 3.082079}
   m_Direction: 0
 --- !u!95 &4611191114047003443
 Animator:
@@ -1078,7 +1078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4611191114452800210
 Transform:
   m_ObjectHideFlags: 0
@@ -1097,7 +1097,7 @@ Transform:
   - {fileID: 4611191114449013379}
   - {fileID: 2371005175148174727}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4611191114452800208
 MonoBehaviour:
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   _phase1Threshold: 20
   _phase2Threshold: 6
   _phase2FadeoutTimeMultiplier: 0.8
-  _anim: {fileID: 0}
+  _anim: {fileID: 4611191114047003443}
   _boss: {fileID: 4611191114047003438}
   _collider: {fileID: 4611191114047003436}
   _bullet: {fileID: 6784614139119217371, guid: ac409060a4005eb468b8ce47a2b7237b, type: 3}
