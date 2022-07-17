@@ -69,11 +69,11 @@ public class DoorController : MonoBehaviour
         _player.FreezeSprite();
 
         UIController.GetInstance().StartFadeToBlack();
-        _theOtherDoor.DisableDoor();
+        _theOtherDoor?.DisableDoor();
 
         yield return new WaitForSeconds(_timeWaitedForEnterDoor);
 
-        _theOtherDoor.EnableDoor();
+        _theOtherDoor?.EnableDoor();
         UIController.GetInstance().StartFadeFromBlack();
         _player.UnfreezeSprite();
         _playerExiting = false;
