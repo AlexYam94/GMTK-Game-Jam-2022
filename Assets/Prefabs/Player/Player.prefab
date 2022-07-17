@@ -167,7 +167,7 @@ MonoBehaviour:
   _collider: {fileID: 2323277027274030485}
   _dashSpeed: 20
   _dashTime: 0.2
-  _waitAfterDashing: 0.4
+  _waitAfterDashing: 1
   _standing: {fileID: 2323277027274030480}
   _ball: {fileID: 8699020336098065816}
   _waitToBall: 0.3
@@ -230,7 +230,6 @@ MonoBehaviour:
   _bomb: {fileID: 1638005240366544559, guid: 1506d3d04e8c50449b2e97a9f58a354a, type: 3}
   _bombPosition: {fileID: 2090145755}
   _bulletPoolInitialCount: 20
-  _pattern: {fileID: 8755759905545545339}
   poolCount: 0
 --- !u!114 &1603731931
 MonoBehaviour:
@@ -273,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 7
-  _invincibilityLength: 1.5
+  _invincibilityLength: 0.8
   _flashLength: 0.1
   _playerSprites:
   - {fileID: 2323277027274030484}
