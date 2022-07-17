@@ -49,6 +49,26 @@ public class Pill : MonoBehaviour
                 }
             }
         }
+        if (_playerPillController != null && _playerInventoryController != null)
+        {
+            if (_playerPillController.CanTakePill())
+            {
+                UIController.GetInstance().EnableInteractText();
+            }
+            else
+            {
+                UIController.GetInstance().DisableInteractText();
+            }
+            if (_playerInventoryController.CanInventoryPill(this))
+            {
+                UIController.GetInstance().EnablePickupText();
+            }
+            else
+            {
+                UIController.GetInstance().DisablePickupText();
+            }
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
