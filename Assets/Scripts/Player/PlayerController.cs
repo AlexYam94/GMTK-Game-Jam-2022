@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                velocity.y = _jumpForce;
+                velocity.y = _jumpForce * _jumpForceScale;
             }
 
             _playerAnimation.Jump(!grounded); 

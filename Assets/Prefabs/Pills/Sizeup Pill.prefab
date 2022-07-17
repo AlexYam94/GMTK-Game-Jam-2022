@@ -125,7 +125,7 @@ MonoBehaviour:
   flashInterval: 0.3
   targetXScale: 2
   targetYScale: 2
-  targetJumpForceScale: 1.5
+  targetJumpForceScale: 1.3
   targetHPScale: 2
   targetSpeedScale: 1.5
   targetColor: {r: 1, g: 0.49411765, b: 0, a: 1}
