@@ -3,6 +3,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleEndTask : Node
 {
@@ -25,6 +26,7 @@ public class BattleEndTask : Node
         _collider = _boss.GetComponent<Collider2D>();
         _bt = bt;
         _player = player;
+        _virtualCamera.m_Lens.OrthographicSize = 10;
     }
 
     public override NodeState Evaluate()
@@ -62,6 +64,8 @@ public class BattleEndTask : Node
                 _bt.SetActive(false);
                 _virtualCamera.GetComponent<LookAt>().enabled = true;
             }
+            _virtualCamera.m_Lens.OrthographicSize = 6;
+            SceneManager.LoadScene("GameOver");
             return NodeState.SUCCESS;
         }
         else if(PlayerHealthController.GetInstance().GetCurrentHealth()>0)

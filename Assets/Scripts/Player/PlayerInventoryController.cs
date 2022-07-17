@@ -158,6 +158,16 @@ public class PlayerInventoryController : MonoBehaviour
         }
     }
 
+    public void ResetInventory()
+    {
+        RemovePill(PlayerPillController.PillType.Accelerate);
+        RemovePill(PlayerPillController.PillType.Decelerate);
+        RemovePill(PlayerPillController.PillType.Sizeup);
+        RemovePill(PlayerPillController.PillType.Sizedown);
+        RemovePill(PlayerPillController.PillType.Invincible);
+        RemovePill(PlayerPillController.PillType.Invisible);
+    }
+
     private void RemovePill(PlayerPillController.PillType type) {
         switch (type)
         {
