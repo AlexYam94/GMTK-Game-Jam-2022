@@ -16,6 +16,7 @@ public class FireController : MonoBehaviour
 
     public int poolCount = 0;
 
+    AudioSource _audioSource;
     ObjectPool<Bullet> _bulletPool;
     PlayerAnimation _playerAnimation;
     Transform _whereToFire;
@@ -39,6 +40,7 @@ public class FireController : MonoBehaviour
         _abilitiesController = GetComponent<AbilitiesController>();
         _whereToFire = _firePosition;
         _bulletPool = new ObjectPool<Bullet>(CreateBullet, _bullectPrefab, _firePosition, _bulletPoolInitialCount);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     //private void OnEnable()
@@ -76,6 +78,7 @@ public class FireController : MonoBehaviour
 
     private void Shoot()
     {
+        _audioSource.Play();
         if (_pattern.isIntermittent)
         {
             Bullet bullet = _bulletPool.Dequeue();
