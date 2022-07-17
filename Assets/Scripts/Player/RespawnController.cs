@@ -68,6 +68,6 @@ public class RespawnController : MonoBehaviour
         _player.transform.position = _respawnPoint;
         _player.SetActive(true);
         PlayerHealthController.GetInstance().FillHealth();
-        _followCamera.LookAt = _player.gameObject.transform;
+        //_followCamera.LookAt = _player.gameObject.transform;
     }
 }
