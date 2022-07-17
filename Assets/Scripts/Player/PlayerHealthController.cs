@@ -15,6 +15,7 @@ public class PlayerHealthController : MonoBehaviour
     float _invincCounter;
     float _flashCounter;
     int _currentHealth;
+    bool _isInvincible;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class PlayerHealthController : MonoBehaviour
         UpdateHealthUI();
         UIController.GetInstance().SetHealthBarLength(_maxHealth);
         _invincibleFlash = false;
+        _isInvincible = false;
     }
 
     private void Update()
@@ -70,7 +72,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void Damage(int damageAmount)
     {
-        if (_invincCounter > 0) return;
+        if (_invincCounter > 0 || _isInvincible) return;
         _currentHealth -= damageAmount;
         UpdateHealthUI();
         if (_currentHealth <= 0)
@@ -134,5 +136,10 @@ public class PlayerHealthController : MonoBehaviour
     public void SetCurrentHealth(int currentHealth)
     {
         _currentHealth = currentHealth;
+    }
+
+    public void ToggleInvincible()
+    {
+        _isInvincible = !_isInvincible;
     }
 }

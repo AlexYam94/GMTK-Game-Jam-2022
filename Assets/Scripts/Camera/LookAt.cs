@@ -22,6 +22,10 @@ public class LookAt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_player == null)
+        {
+            _player = PlayerHealthController.GetInstance().gameObject;
+        }
         if(_virtualCam.Follow == null)
         {
             _virtualCam.Follow = _player.transform;

@@ -22,6 +22,7 @@ public class EnemyFlyingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_playerLocation.gameObject.GetComponent<PlayerController>().IsVisible()) return;
         if (!_isChasing)
         {
             if(Vector3.Distance(transform.position, _playerLocation.position) < _rangeToStartChase)

@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Image _fadeScreen;
     [SerializeField] float _fadeSpeed;
     [SerializeField] TextMeshProUGUI _interactText;
+    [SerializeField] TextMeshProUGUI _pickupText;
 
     private static UIController _instance;
 
@@ -87,5 +88,14 @@ public class UIController : MonoBehaviour
     public void DisableInteractText()
     {
         _interactText.gameObject.SetActive(false);
+    }
+
+    public void EnablePickupText()
+    {
+        _pickupText.gameObject.SetActive(true);
+    }
+    public void DisablePickupText()
+    {
+        _pickupText.gameObject.SetActive(false);
     }
 }

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _standing;
     [SerializeField] GameObject _ball;
     [SerializeField] float _waitToBall;
+    [SerializeField] Transform _standDetectStartPosition;
     [SerializeField] float _standDetectDistance = .2f;
     [SerializeField] float _ballSpeedMultiplier = .8f;
     [SerializeField] CircleCollider2D _ballCollider;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private float _jumpForceScale = 1;
     private bool _invertedControl = false;
     private bool _canStop = true;
+    private bool _isVisible = true;
 
     private void Start()
     {
@@ -53,7 +55,8 @@ public class PlayerController : MonoBehaviour
         _invertedControl = false;
         _canStop = true;
         _coyoteCounter = _coyoteTime;
-    }
+        _isVisible = true;
+}
 
     private void Update()
     {
@@ -90,7 +93,11 @@ public class PlayerController : MonoBehaviour
             _fireController.SetDirection(Bullet.Direction.left);
         }
 
-        Move();
+
+        if (!Input.GetKey(KeyCode.W))
+        {
+            Move();
+        }
         CheckActivateBall();
     }
 
@@ -112,7 +119,10 @@ public class PlayerController : MonoBehaviour
                 {
             _dashCounter = _dashTime;
             _dashRechargeCounter = _waitAfterDashing;
-            _playerEffectController.ShowAfterImage(_playerSprite);
+            if (_isVisible)
+            {
+                _playerEffectController.ShowAfterImage(_playerSprite);
+            }
             SwitchToStanding();
         }
 
@@ -123,7 +133,10 @@ public class PlayerController : MonoBehaviour
             _playerEffectController.CountDown(Time.deltaTime);
             if (_playerEffectController.GetAfterImageCounter() <= 0)
             {
-                _playerEffectController.ShowAfterImage(_playerSprite);
+                if (_isVisible)
+                {
+                    _playerEffectController.ShowAfterImage(_playerSprite);
+                }
             }
             return;
         }
@@ -254,14 +267,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private bool canStand()
+    public bool canStand()
     {
         RaycastHit2D hitLeft;
         RaycastHit2D hitMiddle;
         RaycastHit2D hitRight;
-        Vector2 middle = transform.position;
-        Vector2 left = transform.position;
-        Vector2 right = transform.position;
+        Vector2 middle = _standDetectStartPosition.position;
+        Vector2 left = _standDetectStartPosition.position;
+        Vector2 right = _standDetectStartPosition.position;
         float radius = _ballCollider.radius;
         left.x += radius;
         right.x -= radius;
@@ -333,5 +346,15 @@ public class PlayerController : MonoBehaviour
     public void ToggleCanStop()
     {
         _canStop = !_canStop;
+    }
+
+    public void ToggleInvisible()
+    {
+        _isVisible = !_isVisible;
+    }
+
+    public bool IsVisible()
+    {
+        return _isVisible;
     }
 }

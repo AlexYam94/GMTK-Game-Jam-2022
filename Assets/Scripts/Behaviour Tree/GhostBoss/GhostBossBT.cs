@@ -53,6 +53,7 @@ public class GhostBossBT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_player.GetComponent<PlayerController>().IsVisible()) return;
         _root.Evaluate();
 
     }

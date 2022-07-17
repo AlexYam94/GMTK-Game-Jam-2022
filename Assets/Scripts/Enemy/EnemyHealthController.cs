@@ -14,6 +14,7 @@ public class EnemyHealthController : MonoBehaviour
             if (_deathEffect != null)
             {
                 Instantiate(_deathEffect, transform.position, transform.rotation);
+                GetComponent<DropitemController>()?.DropItem();
             }
             Destroy(gameObject);
         }
