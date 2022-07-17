@@ -6,17 +6,17 @@ public class Pill : MonoBehaviour
 {
     public PlayerPillController.PillType type;
 
-    public float duration=5;
-    public float startFlashTime=3;
-    public float flashInterval=.3f;
-    public float targetXScale=1;
-    public float targetYScale=1;
-    public float targetJumpForceScale=1;
-    public float targetHPScale=1;
-    public float targetSpeedScale=1;
+    public float duration = 5;
+    public float startFlashTime = 3;
+    public float flashInterval = .3f;
+    public float targetXScale = 1;
+    public float targetYScale = 1;
+    public float targetJumpForceScale = 1;
+    public float targetHPScale = 1;
+    public float targetSpeedScale = 1;
     public Color targetColor;
-    public float targetInvincibleTime=0;
-    public float paralyzeTime=0;
+    public float targetInvincibleTime = 0;
+    public float paralyzeTime = 0;
     public bool controlInverted = false;
     public bool canStop = true;
 
@@ -25,6 +25,7 @@ public class Pill : MonoBehaviour
 
     private bool _interactable;
     private PlayerPillController _playerPillController;
+    private PlayerInventoryController _playerInventoryController;
 
     private void Update()
     {
@@ -36,10 +37,17 @@ public class Pill : MonoBehaviour
                 {
                     _playerPillController.TakePill(this, type);
                     gameObject.SetActive(false);
-                    Destroy(gameObject,20f);
+                    Destroy(gameObject, 20f);
                 }
             }
-
+            if (Input.GetKeyDown(KeyCode.V)) {
+                if (_playerInventoryController.CanInventoryPill(this))
+                {
+                    _playerInventoryController.InventoryPill(this);
+                    gameObject.SetActive(false);
+                    Destroy(gameObject, 20f);
+                }
+            }
         }
     }
 
@@ -48,10 +56,15 @@ public class Pill : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerPillController = other.GetComponentInParent<PlayerPillController>();
+            _playerInventoryController = other.GetComponentInParent<PlayerInventoryController>();
             if (_playerPillController.CanTakePill())
             {
                 UIController.GetInstance().EnableInteractText();
                 _interactable = true;
+            }
+            if (_playerInventoryController.CanInventoryPill(this))
+            {
+                UIController.GetInstance().EnablePickupText();
             }
         }
     }
@@ -61,9 +74,10 @@ public class Pill : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerPillController = null;
+            _playerInventoryController = null;
             UIController.GetInstance().DisableInteractText();
+            UIController.GetInstance().DisablePickupText();
             _interactable = false;
         }
     }
-
 }

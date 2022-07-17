@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Image _fadeScreen;
     [SerializeField] float _fadeSpeed;
     [SerializeField] TextMeshProUGUI _interactText;
+    [SerializeField] TextMeshProUGUI _pickupText;
 
     private static UIController _instance;
 
@@ -35,11 +36,12 @@ public class UIController : MonoBehaviour
         if (_fadingToBlack)
         {
             _fadeScreen.color = new Color(_fadeScreen.color.r, _fadeScreen.color.g, _fadeScreen.color.b, Mathf.MoveTowards(_fadeScreen.color.a, 1f, _fadeSpeed * Time.deltaTime));
-            if(_fadeScreen.color.a == 1f)
+            if (_fadeScreen.color.a == 1f)
             {
                 _fadingToBlack = false;
             }
-        }else if (_fadingFromBlack)
+        }
+        else if (_fadingFromBlack)
         {
             _fadeScreen.color = new Color(_fadeScreen.color.r, _fadeScreen.color.g, _fadeScreen.color.b, Mathf.MoveTowards(_fadeScreen.color.a, 0f, _fadeSpeed * Time.deltaTime));
         }
@@ -87,5 +89,14 @@ public class UIController : MonoBehaviour
     public void DisableInteractText()
     {
         _interactText.gameObject.SetActive(false);
+    }
+
+    public void EnablePickupText()
+    {
+        _pickupText.gameObject.SetActive(true);
+    }
+    public void DisablePickupText()
+    {
+        _pickupText.gameObject.SetActive(false);
     }
 }
