@@ -14,6 +14,7 @@ public class PlayerInventoryController : MonoBehaviour
     private int _inventoryAcceleratePillNum;
     private int _inventoryDeceleratePillNum;
     private int _inventoryInvinciblePillNum;
+    private int _inventoryInvisiblePillNum;
     private Pill _currentPill;
 
     public int _maxInventoryTotPill;
@@ -22,6 +23,7 @@ public class PlayerInventoryController : MonoBehaviour
     public int _maxInventoryAcceleratePill;
     public int _maxInventoryDeceleratePill;
     public int _maxInventoryInvinciblePill;
+    public int _maxInventoryInvisiblePill;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,10 @@ public class PlayerInventoryController : MonoBehaviour
             {
                 RemovePill(PlayerPillController.PillType.Decelerate);
             }
+            if (Input.GetKeyDown(KeyCode.Alpha6) && (_inventoryInvisiblePillNum >= 1))
+            {
+                RemovePill(PlayerPillController.PillType.Invisible);
+            }
         }
     }
 
@@ -83,6 +89,9 @@ public class PlayerInventoryController : MonoBehaviour
                 return _canInventoryPill;
             case PlayerPillController.PillType.Decelerate:
                 _canInventoryPill = (_inventoryDeceleratePillNum < _maxInventoryDeceleratePill);
+                return _canInventoryPill;
+            case PlayerPillController.PillType.Invisible:
+                _canInventoryPill = (_inventoryInvisiblePillNum < _maxInventoryInvisiblePill);
                 return _canInventoryPill;
             default:
                 return _canInventoryPill;
@@ -124,6 +133,12 @@ public class PlayerInventoryController : MonoBehaviour
                     _inventoryDeceleratePillNum += 1;
                 }
                 break;
+            case PlayerPillController.PillType.Invisible:
+                if (_inventoryInvisiblePillNum <= _maxInventoryInvinciblePill)
+                {
+                    _inventoryInvisiblePillNum += 1;
+                }
+                break;
             default:
                 break;
         }
@@ -151,6 +166,10 @@ public class PlayerInventoryController : MonoBehaviour
             case PlayerPillController.PillType.Decelerate:
                 _currentPill = GetDeceleratePill();
                 _inventoryDeceleratePillNum--;
+                break;
+            case PlayerPillController.PillType.Invisible:
+                _currentPill = GetInvisiblePill();
+                _inventoryInvisiblePillNum--;
                 break;
             default:
                 break;
@@ -260,6 +279,26 @@ public class PlayerInventoryController : MonoBehaviour
             targetInvincibleTime = 5,
             paralyzeTime = 0,
             controlInverted = true,
+            canStop = true,
+        };
+    }
+    private Pill GetInvisiblePill()
+    {
+        return new Pill
+        {
+            type = PlayerPillController.PillType.Invisible,
+            duration = 5,
+            startFlashTime = 2,
+            flashInterval = .3f,
+            targetXScale = 1,
+            targetYScale = 1,
+            targetJumpForceScale = 1,
+            targetHPScale = 1,
+            targetSpeedScale = 1f,
+            targetColor = new Color(255, 255, 255, 0),
+            targetInvincibleTime = 0,
+            paralyzeTime = 0,
+            controlInverted = false,
             canStop = true,
         };
     }

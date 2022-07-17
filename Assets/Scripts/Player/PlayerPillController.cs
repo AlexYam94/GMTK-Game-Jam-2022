@@ -33,7 +33,8 @@ public class PlayerPillController : MonoBehaviour
         Sizedown,
         Invincible,
         Accelerate,
-        Decelerate
+        Decelerate,
+        Invisible
     }
 
     // Start is called before the first frame update
@@ -119,6 +120,9 @@ public class PlayerPillController : MonoBehaviour
                     _playerController.ToggleCanStop();
                 }
                 break;
+            case PillType.Invisible:
+                _playerController.ToggleInvisible();
+                break;
             default:
                 break;
         }
@@ -152,6 +156,15 @@ public class PlayerPillController : MonoBehaviour
                 if (!_currentPill.canStop)
                 {
                     _playerController.ToggleCanStop();
+                }
+                break;
+            case PillType.Invisible:
+                _playerController.ToggleInvisible();
+                break;
+            case PillType.Sizedown:
+                if (!_playerController.canStand())
+                {
+                    RespawnController.instance.Respawn();
                 }
                 break;
             default:
