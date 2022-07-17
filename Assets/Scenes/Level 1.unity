@@ -1568,6 +1568,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: ba2c2bf3cf6c2ec41ba2dddb386354e9, type: 2}
+    - target: {fileID: 2323277026970218929, guid: 5c85f45d1012e4f47b5c101a968f554a, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2323277027274030483, guid: 5c85f45d1012e4f47b5c101a968f554a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -1630,7 +1634,7 @@ MonoBehaviour:
   _playerSprites:
   - {fileID: 543043577}
   - {fileID: 2019531015}
---- !u!114 &1550662618
+--- !u!114 &1550662626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1639,13 +1643,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1550662601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc70a5ad4c39bf14b80cb8f13857cfab, type: 3}
+  m_Script: {fileID: 11500000, guid: 790ae74fee499a74bab0e42b54e33201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxInventoryTotPill: 3
-  _maxInventoryChangeSizePill: 1
-  _maxInventoryChangeSpeedPill: 1
-  _maxInventoryChangeInvinciblePill: 1
+  _maxInventoryEnlargePill: 1
+  _maxInventoryDelargePill: 1
+  _maxInventoryAcceleratePill: 1
+  _maxInventoryDeceleratePill: 1
+  _maxInventoryInvinciblePill: 1
+  _maxInventoryInvisiblePill: 0
 --- !u!95 &1559706146 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4611191114047003443, guid: 91940971845fce54f97d65175c4d3345, type: 3}

@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 4919251718378574517}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1871785438562587653
 Rigidbody2D:
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1060734261878335405}
   - component: {fileID: 6660251991706222732}
   - component: {fileID: 6905132325731482815}
-  - component: {fileID: 7172306312938308683}
+  - component: {fileID: 2010008651408996436}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1614137381, guid: 341e0b63147250148953e922aa652231, type: 3}
   m_Color: {r: 0.28475437, g: 0.745283, b: 0.3149514, a: 0.18431373}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76db24be154b84694e6ec6c5f1db02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  type: 5
   duration: 5
   startFlashTime: 2
   flashInterval: 0.3
@@ -214,8 +214,8 @@ MonoBehaviour:
   paralyzeTime: 0
   controlInverted: 0
   canStop: 1
---- !u!61 &7172306312938308683
-BoxCollider2D:
+--- !u!70 &2010008651408996436
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,15 +228,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.44, y: 1}
+  m_Direction: 0
