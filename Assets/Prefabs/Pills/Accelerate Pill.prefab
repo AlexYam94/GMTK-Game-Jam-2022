@@ -158,7 +158,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2704299513600459216}
-  - component: {fileID: 2704299513600459218}
   - component: {fileID: 2704299513600459219}
   - component: {fileID: 1493471876098345225}
   m_Layer: 13
@@ -184,32 +183,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2704299513600459218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2704299513600459222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da76db24be154b84694e6ec6c5f1db02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
-  duration: 5
-  startFlashTime: 2
-  flashInterval: 0.3
-  targetXScale: 1
-  targetYScale: 1
-  targetJumpForceScale: 1
-  targetHPScale: 1
-  targetSpeedScale: 3
-  targetColor: {r: 1, g: 0.047058824, b: 0, a: 1}
-  targetInvincibleTime: 0
-  paralyzeTime: 0
-  controlInverted: 0
-  canStop: 0
 --- !u!61 &2704299513600459219
 BoxCollider2D:
   m_ObjectHideFlags: 0
