@@ -6,6 +6,7 @@ public class EnemyHealthController : MonoBehaviour
 {
     [SerializeField] int _totalHealth = 2;
     [SerializeField] GameObject _deathEffect;
+    [SerializeField] int _score = 100;
 
     public void Damage(int damageAmount)
     {
@@ -15,6 +16,7 @@ public class EnemyHealthController : MonoBehaviour
             {
                 Instantiate(_deathEffect, transform.position, transform.rotation);
                 GetComponent<DropitemController>()?.DropItem();
+                ScoreController.GetInstance().Add(_score);
             }
             Destroy(gameObject);
         }

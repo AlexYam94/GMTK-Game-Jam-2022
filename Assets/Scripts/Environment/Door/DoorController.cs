@@ -74,10 +74,13 @@ public class DoorController : MonoBehaviour
         yield return new WaitForSeconds(_timeWaitedForEnterDoor);
 
         _theOtherDoor?.EnableDoor();
+        ScoreController.GetInstance().FinishLevel();
         UIController.GetInstance().StartFadeFromBlack();
         _player.UnfreezeSprite();
         _playerExiting = false;
         _player.EnableInput();
+        Vector3 spawnPos = GameObject.Find("SpawnPoint").transform.position;
+        _player.transform.position = spawnPos;
         RespawnController.instance.SetSpawn(_doorWayExitPoint.position);
         if (_levelToLoad.Length > 0)
         {

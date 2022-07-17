@@ -32,6 +32,8 @@ public class BattleEndTask : Node
         bool battleEnded = GetData<bool>(GhostBossBT.BattleEndTag);
         if (battleEnded)
         {
+
+            ScoreController.GetInstance().Add(5000);
             if (!_camBackToNormal)
             {
                 _anim.SetTrigger("vanished");

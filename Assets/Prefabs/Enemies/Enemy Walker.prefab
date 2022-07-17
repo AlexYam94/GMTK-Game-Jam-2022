@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalHealth: 2
   _deathEffect: {fileID: 4385799115452086429, guid: 938048d948558f84494ef905fa69c914, type: 3}
+  _score: 50
 --- !u!114 &2153447823744740986
 MonoBehaviour:
   m_ObjectHideFlags: 0

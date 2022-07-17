@@ -8,9 +8,11 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component, new() {
 			_instance = this as T;
 			DontDestroyOnLoad (this);
         } else if(_instance != this) {
-			Destroy (_instance.gameObject);
-            _instance = this as T;
-            DontDestroyOnLoad(this);
+            //Destroy (_instance.gameObject);
+            //         _instance = this as T;
+            //         DontDestroyOnLoad(this);
+
+            Destroy(gameObject);
         }
         Init();
     }
