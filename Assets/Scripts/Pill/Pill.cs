@@ -57,10 +57,10 @@ public class Pill : MonoBehaviour
         {
             _playerPillController = other.GetComponentInParent<PlayerPillController>();
             _playerInventoryController = other.GetComponentInParent<PlayerInventoryController>();
+            _interactable = true;
             if (_playerPillController.CanTakePill())
             {
                 UIController.GetInstance().EnableInteractText();
-                _interactable = true;
             }
             if (_playerInventoryController.CanInventoryPill(this))
             {

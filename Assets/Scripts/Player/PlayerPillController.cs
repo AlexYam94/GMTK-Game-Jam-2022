@@ -113,6 +113,7 @@ public class PlayerPillController : MonoBehaviour
         {
             case PillType.Invincible:
                 _playerController.ToggleInvertControl();
+                PlayerHealthController.GetInstance().ToggleInvincible();
                 break;
             case PillType.Accelerate:
                 if (!pill.canStop)
@@ -151,6 +152,7 @@ public class PlayerPillController : MonoBehaviour
         {
             case PillType.Invincible:
                 _playerController.ToggleInvertControl();
+                PlayerHealthController.GetInstance().ToggleInvincible();
                 break;
             case PillType.Accelerate:
                 if (!_currentPill.canStop)

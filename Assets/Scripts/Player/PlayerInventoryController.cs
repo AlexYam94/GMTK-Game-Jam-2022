@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInventoryController : MonoBehaviour
 {
@@ -9,21 +10,28 @@ public class PlayerInventoryController : MonoBehaviour
     private bool _canInventoryPill;
     private PlayerController _playerController;
     private PlayerPillController _playerPillController;
-    private int _inventoryEnlargePillNum;
-    private int _inventoryDelargePillNum;
+    private int _inventorySizeupPillNum;
+    private int _inventorySizedownPillNum;
     private int _inventoryAcceleratePillNum;
     private int _inventoryDeceleratePillNum;
     private int _inventoryInvinciblePillNum;
     private int _inventoryInvisiblePillNum;
     private Pill _currentPill;
 
-    public int _maxInventoryTotPill;
-    public int _maxInventoryEnlargePill;
-    public int _maxInventoryDelargePill;
+    public int _maxInventoryToPill;
+    public int _maxInventorySizeupPill;
+    public int _maxInventorySizedownPill;
     public int _maxInventoryAcceleratePill;
     public int _maxInventoryDeceleratePill;
     public int _maxInventoryInvinciblePill;
     public int _maxInventoryInvisiblePill;
+
+    public Image _sizeupImage;
+    public Image _sizedownImage;
+    public Image _accelerateImage;
+    public Image _deceeratImage;
+    public Image _invincibleImage;
+    public Image _invisibleImage;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +46,11 @@ public class PlayerInventoryController : MonoBehaviour
     {
         if (_playerPillController.CanTakePill())
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && (_inventoryEnlargePillNum >= 1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && (_inventorySizeupPillNum >= 1))
             {
                 RemovePill(PlayerPillController.PillType.Sizeup);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && (_inventoryDelargePillNum >= 1))
+            if (Input.GetKeyDown(KeyCode.Alpha2) && (_inventorySizedownPillNum >= 1))
             {
                 RemovePill(PlayerPillController.PillType.Sizedown);
             }
@@ -68,7 +76,7 @@ public class PlayerInventoryController : MonoBehaviour
     public bool CanInventoryPill(Pill pill)
     {
         _currentPill = pill;
-        if ((_inventoryEnlargePillNum + _inventoryDelargePillNum + _inventoryInvinciblePillNum + _inventoryAcceleratePillNum + _inventoryDeceleratePillNum) >= _maxInventoryTotPill)
+        if ((_inventorySizeupPillNum + _inventorySizedownPillNum + _inventoryInvinciblePillNum + _inventoryAcceleratePillNum + _inventoryDeceleratePillNum) >= _maxInventoryToPill)
         {
             _canInventoryPill = false;
             return _canInventoryPill;
@@ -76,10 +84,10 @@ public class PlayerInventoryController : MonoBehaviour
         switch (_currentPill.type)
         {
             case PlayerPillController.PillType.Sizeup:
-                _canInventoryPill = (_inventoryEnlargePillNum < _maxInventoryEnlargePill);
+                _canInventoryPill = (_inventorySizeupPillNum < _maxInventorySizeupPill);
                 return _canInventoryPill;
             case PlayerPillController.PillType.Sizedown:
-                _canInventoryPill = (_inventoryDelargePillNum < _maxInventoryEnlargePill);
+                _canInventoryPill = (_inventorySizedownPillNum < _maxInventorySizeupPill);
                 return _canInventoryPill;
             case PlayerPillController.PillType.Invincible:
                 _canInventoryPill = (_inventoryInvinciblePillNum < _maxInventoryInvinciblePill);
@@ -104,39 +112,45 @@ public class PlayerInventoryController : MonoBehaviour
         switch (_currentPill.type)
         {
             case PlayerPillController.PillType.Sizeup:
-                if (_inventoryEnlargePillNum <= _maxInventoryEnlargePill)
+                if (_inventorySizeupPillNum <= _maxInventorySizeupPill)
                 {
-                    _inventoryEnlargePillNum += 1;
+                    _inventorySizeupPillNum += 1;
+                    _sizeupImage.gameObject.SetActive(true);
                 }
                 break;
             case PlayerPillController.PillType.Sizedown:
-                if (_inventoryDelargePillNum <= _maxInventoryDelargePill)
+                if (_inventorySizedownPillNum <= _maxInventorySizedownPill)
                 {
-                    _inventoryDelargePillNum += 1;
+                    _inventorySizedownPillNum += 1;
+                    _sizedownImage.gameObject.SetActive(true);
                 }
                 break;
             case PlayerPillController.PillType.Invincible:
                 if (_inventoryInvinciblePillNum <= _maxInventoryInvinciblePill)
                 {
                     _inventoryInvinciblePillNum += 1;
+                    _invincibleImage.gameObject.SetActive(true);
                 }
                 break;
             case PlayerPillController.PillType.Accelerate:
                 if (_inventoryAcceleratePillNum <= _maxInventoryAcceleratePill)
                 {
                     _inventoryAcceleratePillNum += 1;
+                    _accelerateImage.gameObject.SetActive(true);
                 }
                 break;
             case PlayerPillController.PillType.Decelerate:
                 if (_inventoryDeceleratePillNum <= _maxInventoryDeceleratePill)
                 {
                     _inventoryDeceleratePillNum += 1;
+                    _deceeratImage.gameObject.SetActive(true);
                 }
                 break;
             case PlayerPillController.PillType.Invisible:
                 if (_inventoryInvisiblePillNum <= _maxInventoryInvinciblePill)
                 {
                     _inventoryInvisiblePillNum += 1;
+                    _invisibleImage.gameObject.SetActive(true);
                 }
                 break;
             default:
@@ -148,28 +162,34 @@ public class PlayerInventoryController : MonoBehaviour
         switch (type)
         {
             case PlayerPillController.PillType.Sizeup:
-                _currentPill = GetEnlargePill();
-                _inventoryEnlargePillNum--;
+                _currentPill = GetSizeupPill();
+                _inventorySizeupPillNum--;
+                _sizeupImage.gameObject.SetActive(false);
                 break;
             case PlayerPillController.PillType.Sizedown:
-                _currentPill = GetDelargePill();
-                _inventoryDelargePillNum--;
+                _currentPill = GetSizedownPill();
+                _inventorySizedownPillNum--;
+                _sizedownImage.gameObject.SetActive(false);
                 break;
             case PlayerPillController.PillType.Invincible:
                 _currentPill = GetInvinciblePill();
                 _inventoryInvinciblePillNum--;
+                _invincibleImage.gameObject.SetActive(false);
                 break;
             case PlayerPillController.PillType.Accelerate:
                 _currentPill = GetAcceleratePill();
                 _inventoryAcceleratePillNum--;
+                _accelerateImage.gameObject.SetActive(false);
                 break;
             case PlayerPillController.PillType.Decelerate:
                 _currentPill = GetDeceleratePill();
                 _inventoryDeceleratePillNum--;
+                _deceeratImage.gameObject.SetActive(false);
                 break;
             case PlayerPillController.PillType.Invisible:
                 _currentPill = GetInvisiblePill();
                 _inventoryInvisiblePillNum--;
+                _invisibleImage.gameObject.SetActive(false);
                 break;
             default:
                 break;
@@ -178,7 +198,7 @@ public class PlayerInventoryController : MonoBehaviour
         _canInventoryPill = true;
     }
 
-    private Pill GetEnlargePill()
+    private Pill GetSizeupPill()
     {
         return new Pill
         {
@@ -191,7 +211,7 @@ public class PlayerInventoryController : MonoBehaviour
             targetJumpForceScale = 1.5f,
             targetHPScale = 2,
             targetSpeedScale = 1.5f,
-            targetColor = new Color(255f, 126f, 0f, 255f),
+            targetColor = new Color(255f, 162f, 0f, 255f),
             targetInvincibleTime = 0,
             paralyzeTime = 0,
             controlInverted = false,
@@ -199,7 +219,7 @@ public class PlayerInventoryController : MonoBehaviour
         };
     }
 
-    private Pill GetDelargePill()
+    private Pill GetSizedownPill()
     {
         return new Pill
         {
@@ -212,7 +232,7 @@ public class PlayerInventoryController : MonoBehaviour
             targetJumpForceScale = .5f,
             targetHPScale = .5f,
             targetSpeedScale = .6f,
-            targetColor = Color.yellow,
+            targetColor = new Color(255f, 255f, 0f, 255f),
             targetInvincibleTime = 0,
             paralyzeTime = 0,
             controlInverted = false,
@@ -275,7 +295,7 @@ public class PlayerInventoryController : MonoBehaviour
             targetJumpForceScale = 1,
             targetHPScale = 1,
             targetSpeedScale = 1,
-            targetColor = new Color(255, 255, 255, 255),
+            targetColor = new Color(0, 0, 0, 255),
             targetInvincibleTime = 5,
             paralyzeTime = 0,
             controlInverted = true,
