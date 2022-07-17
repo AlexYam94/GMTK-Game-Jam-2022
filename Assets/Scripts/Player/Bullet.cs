@@ -8,7 +8,8 @@ public class Bullet : MonoBehaviour
     {
         up,
         left,
-        right
+        right,
+        down
     }
 
     [SerializeField] float _bulletSpeed;
@@ -59,6 +60,9 @@ public class Bullet : MonoBehaviour
                 break;
             case Direction.up:
                 _moveDir = Vector2.up;
+                break;
+            case Direction.down:
+                _moveDir = Vector2.down;
                 break;
         }
         _rb.velocity = _moveDir * _bulletSpeed;

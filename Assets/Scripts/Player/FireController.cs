@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Bullet;
+using static FirePattern;
 
 public class FireController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class FireController : MonoBehaviour
     [SerializeField] GameObject _bomb;
     [SerializeField] Transform _bombPosition;
     [SerializeField] int _bulletPoolInitialCount = 10;
+    [SerializeField] FirePattern _pattern;
 
     public int poolCount = 0;
 
@@ -57,26 +59,52 @@ public class FireController : MonoBehaviour
         {
             if (_isStanding)
             {
-                Bullet bullet = _bulletPool.Dequeue();
-                bullet.SetDirection(_direction);
-                bullet.transform.position = _whereToFire.position;
-                if(bullet.GetObjectPool() == null)
-                {
-                    bullet.SetObjectPool(_bulletPool);
-                }
-                if (Input.GetKey(KeyCode.W))
-                {
-                    _playerAnimation.ShootUp();
-                }
-                else
-                {
-                    _playerAnimation.Shoot();
-                }
+                Shoot();
             }
             else if(_abilitiesController.canDropBomb)
             {
                 Instantiate(_bomb, _bombPosition.position, _bombPosition.rotation);
             }
+        }
+    }
+
+    private void Shoot()
+    {
+        if (_pattern.isIntermittent)
+        {
+            Bullet bullet = _bulletPool.Dequeue();
+            FirePatternDirection firePatternDirection = _pattern.GetNextDirection();
+            Direction direction = ConvertFirePatternDirectionToBulletDirection(firePatternDirection);
+            bullet.SetDirection(direction);
+            bullet.transform.position = _whereToFire.position;
+            if (bullet.GetObjectPool() == null)
+            {
+                bullet.SetObjectPool(_bulletPool);
+            }
+        }
+        else
+        {
+            FirePatternDirection[] firePatternDirections = _pattern.directions;
+            foreach(FirePatternDirection pattern in firePatternDirections)
+            {
+                Bullet bullet = _bulletPool.Dequeue();
+                bullet.SetDirection(ConvertFirePatternDirectionToBulletDirection(pattern));
+                bullet.transform.position = _whereToFire.position;
+                if (bullet.GetObjectPool() == null)
+                {
+                    bullet.SetObjectPool(_bulletPool);
+                }
+
+            }
+
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            _playerAnimation.ShootUp();
+        }
+        else
+        {
+            _playerAnimation.Shoot();
         }
     }
 
@@ -110,5 +138,35 @@ public class FireController : MonoBehaviour
     {
         _canFire = true;
 
+    }
+
+    public Direction ConvertFirePatternDirectionToBulletDirection(FirePatternDirection patternDirection)
+    {
+        switch (patternDirection)
+        {
+            case FirePatternDirection.back:
+                if (_direction == Direction.left)
+                    return Direction.right;
+                else if (_direction == Direction.right)
+                    return Direction.left;
+                else
+                    return Direction.up;
+                break;
+            case FirePatternDirection.front:
+                return _direction;
+                break;
+            case FirePatternDirection.Up:
+                return Direction.up;
+                break;
+            case FirePatternDirection.Down:
+                return Direction.down;
+                break;
+        }
+        return _direction;
+    }
+
+    public void SetFirePattern(FirePattern pattern)
+    {
+        _pattern = pattern;
     }
 }

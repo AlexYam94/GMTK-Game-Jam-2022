@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour
         {
             Move();
         }
+        else
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
         CheckActivateBall();
     }
 
@@ -284,7 +288,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(middle, Vector2.down * _standDetectDistance, Color.red);
         Debug.DrawRay(left, Vector2.down * _standDetectDistance, Color.red);
         Debug.DrawRay(right, Vector2.down * _standDetectDistance, Color.red);
-        bool canStand = hitLeft.collider == null || hitMiddle.collider == null || hitRight.collider == null;
+        bool canStand = hitLeft.collider == null && hitMiddle.collider == null && hitRight.collider == null;
         return canStand;
     }
 
