@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5407313185863379291}
   - component: {fileID: 5407313185863379288}
   - component: {fileID: 1809171995}
+  - component: {fileID: 965266461}
   m_Layer: 12
   m_Name: Enemy Flyer
   m_TagString: Enemy
@@ -118,6 +119,25 @@ MonoBehaviour:
   _rangeToStartChase: 5
   _flySpeed: 5
   _turnSpeed: 5
+--- !u!114 &965266461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407313185863379268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0127f8c607d26014291564f3d0615eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropRate: 0.3
+  itemsToDrop:
+  - {fileID: 2704299513600459222, guid: 39b96846bf91ade44bee9296ad748f9d, type: 3}
+  - {fileID: 7822444963552913432, guid: c1bf07ed6bf38a545bfb1321454f8489, type: 3}
+  - {fileID: 4813607073826385307, guid: c45db67cb176eef47aa9f231f89f699b, type: 3}
+  - {fileID: 8898327630595852942, guid: 3240081328b795c43a2fd108af412b55, type: 3}
+  - {fileID: 6722609896460957922, guid: 7a93b2c0607c03942a90192685191049, type: 3}
 --- !u!1 &5407313186073380697
 GameObject:
   m_ObjectHideFlags: 0
