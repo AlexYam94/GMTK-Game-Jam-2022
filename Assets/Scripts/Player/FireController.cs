@@ -13,13 +13,13 @@ public class FireController : MonoBehaviour
     [SerializeField] GameObject _bomb;
     [SerializeField] Transform _bombPosition;
     [SerializeField] int _bulletPoolInitialCount = 10;
-    [SerializeField] FirePattern _pattern;
 
     public int poolCount = 0;
 
     ObjectPool<Bullet> _bulletPool;
     PlayerAnimation _playerAnimation;
     Transform _whereToFire;
+    FirePattern _pattern;
 
     AbilitiesController _abilitiesController;
     private bool _canFire = true;
@@ -38,12 +38,18 @@ public class FireController : MonoBehaviour
         _playerAnimation = GetComponent<PlayerAnimation>();
         _abilitiesController = GetComponent<AbilitiesController>();
         _whereToFire = _firePosition;
+        _bulletPool = new ObjectPool<Bullet>(CreateBullet, _bullectPrefab, _firePosition, _bulletPoolInitialCount);
     }
 
-    private void OnEnable()
+    //private void OnEnable()
+    //{
+    //    _bulletPool = new ObjectPool<Bullet>(CreateBullet, _bullectPrefab, _firePosition, _bulletPoolInitialCount);
+    //}
+    private void OnLevelWasLoaded()
     {
         _bulletPool = new ObjectPool<Bullet>(CreateBullet, _bullectPrefab, _firePosition, _bulletPoolInitialCount);
     }
+
 
     private void OnDisable()
     {
@@ -125,6 +131,7 @@ public class FireController : MonoBehaviour
         Bullet bullet = GameObject.Instantiate(gameObject, transform.position, transform.rotation);
         bullet.gameObject.SetActive(false);
         bullet.SetObjectPool(_bulletPool);
+        //DontDestroyOnLoad(bullet);
         return bullet;
     }
 

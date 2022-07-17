@@ -7,15 +7,23 @@ public class FirePatternController : MonoBehaviour
     [SerializeField] FirePattern[] patterns;
 
     private FireController _fireController;
+    private int index = -1;
     // Start is called before the first frame update
     void Awake()
     {
         _fireController = GetComponent<FireController>();
     }
 
+
     private void OnEnable()
     {
-        int i = Random.Range(0, patterns.Length);
-        _fireController.SetFirePattern(patterns[i]);
+        index = Random.Range(0, patterns.Length);
+        _fireController.SetFirePattern(patterns[index]);
+    }
+    private void OnLevelWasLoaded(int level)
+    {
+        index = Random.Range(0, patterns.Length);
+        _fireController.SetFirePattern(patterns[index]);
+
     }
 }

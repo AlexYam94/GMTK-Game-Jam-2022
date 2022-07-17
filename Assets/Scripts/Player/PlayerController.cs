@@ -310,11 +310,13 @@ public class PlayerController : MonoBehaviour
 
     public void DisableInput()
     {
+        _fireController.enabled = false;
         _canInput = false;
     }
 
     public void EnableInput()
     {
+        _fireController.enabled = true;
         _canInput = true;
     }
 
